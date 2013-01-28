@@ -1,0 +1,16 @@
+MAKE = make -e LC_ALL=C
+USER = liuli
+PROJ = test
+RHOST = 192.168.1.9
+WORKSPACE = /home/$(USER)/$(PROJ)
+
+.PHONY: all clean restart
+
+all:
+	@ssh $(USER)@$(RHOST) '. .bash_profile && cd $(WORKSPACE) && $(MAKE) -j4'
+
+clean: 
+	@ssh $(USER)@$(RHOST) '. .bash_profile && cd $(WORKSPACE) && $(MAKE) clean'
+
+restart:
+	@ssh $(USER)@$(RHOST) '. .bash_profile && cd $(WORKSPACE) && ./restart'
