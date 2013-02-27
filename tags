@@ -4,7 +4,18 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+Foo	Foo.h	/^    Foo();$/;"	p	class:Foo	access:public	signature:()
+Foo	Foo.h	/^class Foo {$/;"	c
+Foo::Foo	Foo.h	/^    Foo();$/;"	p	class:Foo	access:public	signature:()
+Foo::bar	Foo.h	/^    bool bar(int arg1);$/;"	p	class:Foo	access:public	signature:(int arg1)
+Foo::data	Foo.h	/^    double data;$/;"	m	class:Foo	access:private
+Foo::~Foo	Foo.h	/^    ~Foo();$/;"	p	class:Foo	access:public	signature:()
 TARGET	Makefile	/^TARGET = practice$/;"	m
+bar	Foo.h	/^    bool bar(int arg1);$/;"	p	class:Foo	access:public	signature:(int arg1)
+data	Foo.h	/^    double data;$/;"	m	class:Foo	access:private
 genInts	practice.cpp	/^void genInts(std::function<void(int)> handle) {$/;"	f	signature:(std::function<void(int)> handle)
 main	practice.cpp	/^int main() {$/;"	f	signature:()
 printNum	practice.cpp	/^void printNum(const char* prefix, int i) {$/;"	f	signature:(const char* prefix, int i)
+pthreadTest	practice.cpp	/^void pthreadTest()$/;"	f	signature:()
+thr_func	practice.cpp	/^void* thr_func()$/;"	f	signature:()
+~Foo	Foo.h	/^    ~Foo();$/;"	p	class:Foo	access:public	signature:()
