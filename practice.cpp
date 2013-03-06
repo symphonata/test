@@ -1,6 +1,7 @@
 #include <iostream>
 #include <functional>
 #include <list>
+#include <vector>
 #include <algorithm>
 #include <pthread.h>
 
@@ -57,6 +58,46 @@ class RandSeqGenerator
     }
 };
 
+template<typename T>
+class RandSeqGenerator1
+{
+  private:
+    std::vector<T> source;
+    typename std::vector<T>::iterator iter;
+    T zero;
+
+    void rewind()
+    {
+      std::random_shuffle(this->source.begin(), this->source.end());
+      this->iter = this->source.begin();
+    }
+
+  public:
+    template<typename InputIt>
+      void init(InputIt first, InputIt last, const T& zero)
+      {
+        this->source.clear();
+        this->zero = zero;
+        std::copy(first, last, std::back_inserter(this->source));
+        rewind();
+      }
+
+    T next()
+    {
+      if (this->source.empty())
+        return zero;
+      else if (this->iter == this->source.end())
+        rewind();
+
+      return *this->iter++;
+    }
+
+    void clear()
+    {
+      this->source.clear();
+    }
+};
+
 void genInts(std::function<void(int)> handle) {
   for (int i = 0; i < 10; ++i)
     handle(i);
@@ -92,38 +133,40 @@ void bindTest()
   genInts(std::bind(printNum, "The num is", _1));
 }
 
+template<typename Gen>
+void printGenSeq(Gen& gen, int elemNum)
+{
+  for (int i = 1; i <= elemNum * 5; ++i)
+  {
+    std::cout << gen.next() << std::endl;
+    if (i % elemNum  == 0)
+      std::cout << "----------------------" << std::endl;
+  }
+}
+
 void generatorTest()
 {
   std::list<std::string> strList;
-  strList.push_back("Monday");
-  strList.push_back("Tuesday");
-  strList.push_back("Wednesday");
-  strList.push_back("Thursday");
+  strList.push_back("apple");
+  strList.push_back("bed");
+  strList.push_back("cat");
+  strList.push_back("dog");
+  strList.push_back("eat");
+  strList.push_back("food");
+  strList.push_back("god");
+  strList.push_back("hello");
+  strList.push_back("im");
+  strList.push_back("jack");
 
   RandSeqGenerator<std::string> strGen;
   strGen.init(strList.begin(), strList.end(), std::string(""));
-  for (int i = 1; i < 30; ++i)
-  {
-    std::cout << strGen.next() << std::endl;
-    if (i % strList.size() == 0)
-      std::cout << "----------------------" << std::endl;
-  }
+  printGenSeq(strGen, strList.size());
 
-  std::list<int> intList;
-  intList.push_back(1);
-  intList.push_back(2);
-  intList.push_back(3);
-  intList.push_back(4);
-  intList.push_back(5);
+  std::cout << "************************************" << std::endl;
 
-  RandSeqGenerator<int> intGen;
-  intGen.init(intList.begin(), intList.end(), 0);
-  for (int i = 1; i < 50; ++i)
-  {
-    std::cout << intGen.next() << std::endl;
-    if (i % intList.size() == 0)
-      std::cout << "----------------------" << std::endl;
-  }
+  RandSeqGenerator<std::string> strGen1;
+  strGen1.init(strList.begin(), strList.end(), std::string(""));
+  printGenSeq(strGen1, strList.size());
 }
 
 int main() {
