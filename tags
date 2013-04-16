@@ -4,18 +4,42 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Foo	Foo.h	/^    Foo();$/;"	p	class:Foo	access:public	signature:()
-Foo	Foo.h	/^class Foo {$/;"	c
-Foo::Foo	Foo.h	/^    Foo();$/;"	p	class:Foo	access:public	signature:()
-Foo::bar	Foo.h	/^    bool bar(int arg1);$/;"	p	class:Foo	access:public	signature:(int arg1)
-Foo::data	Foo.h	/^    double data;$/;"	m	class:Foo	access:private
-Foo::~Foo	Foo.h	/^    ~Foo();$/;"	p	class:Foo	access:public	signature:()
+RandSeqGenerator	Utils.h	/^class RandSeqGenerator$/;"	c
+RandSeqGenerator1	Utils.h	/^class RandSeqGenerator1$/;"	c
+RandSeqGenerator1::clear	Utils.h	/^    void clear()$/;"	f	class:RandSeqGenerator1	access:public	signature:()
+RandSeqGenerator1::init	Utils.h	/^      void init(InputIt first, InputIt last, const T& zero)$/;"	f	class:RandSeqGenerator1	access:public	signature:(InputIt first, InputIt last, const T& zero)
+RandSeqGenerator1::iter	Utils.h	/^    typename std::vector<T>::iterator iter;$/;"	m	class:RandSeqGenerator1	access:private
+RandSeqGenerator1::next	Utils.h	/^    T next()$/;"	f	class:RandSeqGenerator1	access:public	signature:()
+RandSeqGenerator1::rewind	Utils.h	/^    void rewind()$/;"	f	class:RandSeqGenerator1	access:private	signature:()
+RandSeqGenerator1::source	Utils.h	/^    std::vector<T> source;$/;"	m	class:RandSeqGenerator1	access:private
+RandSeqGenerator1::zero	Utils.h	/^    T zero;$/;"	m	class:RandSeqGenerator1	access:private
+RandSeqGenerator::clear	Utils.h	/^    void clear()$/;"	f	class:RandSeqGenerator	access:public	signature:()
+RandSeqGenerator::init	Utils.h	/^      void init(InputIt first, InputIt last, const T& zero)$/;"	f	class:RandSeqGenerator	access:public	signature:(InputIt first, InputIt last, const T& zero)
+RandSeqGenerator::next	Utils.h	/^    T next()$/;"	f	class:RandSeqGenerator	access:public	signature:()
+RandSeqGenerator::rollQ	Utils.h	/^    std::list<T> rollQ;$/;"	m	class:RandSeqGenerator	access:private
+RandSeqGenerator::source	Utils.h	/^    std::list<T> source;$/;"	m	class:RandSeqGenerator	access:private
+RandSeqGenerator::zero	Utils.h	/^    T zero;$/;"	m	class:RandSeqGenerator	access:private
 TARGET	Makefile	/^TARGET = practice$/;"	m
-bar	Foo.h	/^    bool bar(int arg1);$/;"	p	class:Foo	access:public	signature:(int arg1)
-data	Foo.h	/^    double data;$/;"	m	class:Foo	access:private
+bindTest	practice.cpp	/^void bindTest()$/;"	f	signature:()
+clear	Utils.h	/^    void clear()$/;"	f	class:RandSeqGenerator	access:public	signature:()
+clear	Utils.h	/^    void clear()$/;"	f	class:RandSeqGenerator1	access:public	signature:()
 genInts	practice.cpp	/^void genInts(std::function<void(int)> handle) {$/;"	f	signature:(std::function<void(int)> handle)
+generatorTest	practice.cpp	/^void generatorTest()$/;"	f	signature:()
+init	Utils.h	/^      void init(InputIt first, InputIt last, const T& zero)$/;"	f	class:RandSeqGenerator	access:public	signature:(InputIt first, InputIt last, const T& zero)
+init	Utils.h	/^      void init(InputIt first, InputIt last, const T& zero)$/;"	f	class:RandSeqGenerator1	access:public	signature:(InputIt first, InputIt last, const T& zero)
+iter	Utils.h	/^    typename std::vector<T>::iterator iter;$/;"	m	class:RandSeqGenerator1	access:private
 main	practice.cpp	/^int main() {$/;"	f	signature:()
+next	Utils.h	/^    T next()$/;"	f	class:RandSeqGenerator	access:public	signature:()
+next	Utils.h	/^    T next()$/;"	f	class:RandSeqGenerator1	access:public	signature:()
+printGenSeq	Utils.h	/^void printGenSeq(Gen& gen, int elemNum)$/;"	f	signature:(Gen& gen, int elemNum)
 printNum	practice.cpp	/^void printNum(const char* prefix, int i) {$/;"	f	signature:(const char* prefix, int i)
 pthreadTest	practice.cpp	/^void pthreadTest()$/;"	f	signature:()
-thr_func	practice.cpp	/^void* thr_func()$/;"	f	signature:()
-~Foo	Foo.h	/^    ~Foo();$/;"	p	class:Foo	access:public	signature:()
+randBetween	Utils.h	/^int randBetween(int min, int max)$/;"	f	signature:(int min, int max)
+rewind	Utils.h	/^    void rewind()$/;"	f	class:RandSeqGenerator1	access:private	signature:()
+rollQ	Utils.h	/^    std::list<T> rollQ;$/;"	m	class:RandSeqGenerator	access:private
+source	Utils.h	/^    std::list<T> source;$/;"	m	class:RandSeqGenerator	access:private
+source	Utils.h	/^    std::vector<T> source;$/;"	m	class:RandSeqGenerator1	access:private
+thr_func	practice.cpp	/^void* thr_func(void* args)$/;"	f	signature:(void* args)
+uuidTest	practice.cpp	/^void uuidTest()$/;"	f	signature:()
+zero	Utils.h	/^    T zero;$/;"	m	class:RandSeqGenerator	access:private
+zero	Utils.h	/^    T zero;$/;"	m	class:RandSeqGenerator1	access:private

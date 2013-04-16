@@ -1,7 +1,9 @@
 #include <iostream>
 #include <functional>
 #include <vector>
+#include <cstring>
 #include <pthread.h>
+#include <uuid/uuid.h>
 #include "Utils.h"
 
 void genInts(std::function<void(int)> handle) {
@@ -39,6 +41,20 @@ void bindTest()
   genInts(std::bind(printNum, "The num is", _1));
 }
 
+void uuidTest()
+{
+  for (int n = 0; n < 10; ++n)
+  {
+    uuid_t uuid1 = { 0 };
+    uuid_generate(uuid1);
+    for (size_t i = 0; i < sizeof(uuid1); ++i)
+    {
+      printf("%x ", uuid1[i]);
+    }
+    printf("\n");
+  }
+}
+
 void generatorTest()
 {
   std::list<std::string> strList;
@@ -65,7 +81,7 @@ void generatorTest()
 }
 
 int main() {
-  generatorTest();
+  uuidTest();
 	return 0;
 }
 

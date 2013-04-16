@@ -1,5 +1,5 @@
 CXXFLAGS += -Wall -g3 -std=c++0x
-CXXLFLAGS += -lpthread
+CXXLFLAGS += -lpthread -luuid
 TARGET = practice
 
 .PHONY: clean tag
@@ -7,8 +7,9 @@ TARGET = practice
 $(TARGET): practice.o
 	$(CXX) $^ -o $@ $(CXXLFLAGS)
 
-practice.o: practice.cpp
-	$(CXX) -c $(CXXFLAGS) $^ -o $@ 
+practice.o: practice.cpp Utils.h
+	$(CXX) -c $(CXXFLAGS) practice.cpp -o $@ 
+
 clean:
 	@rm -vf $(TARGET)
 	@rm -vf *.o

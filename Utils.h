@@ -1,5 +1,7 @@
 #include <algorithm>
 #include <list>
+#include <vector>
+#include <iostream>
 
 int randBetween(int min, int max)
 {
